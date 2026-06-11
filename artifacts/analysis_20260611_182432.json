@@ -1,0 +1,11 @@
+{
+  "results": [
+    {
+      "config": {
+        "metric": "multi_turn_task_success_v1",
+        "candidate": "candidate_1"
+      },
+      "analysis_time": "2026-06-11T18:24:41.640569Z"
+    }
+  ]
+}

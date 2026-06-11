@@ -1,0 +1,48 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "standard_checkout_save10",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "I want to buy 2 wireless headphones, and I have the coupon code SAVE10."
+          }
+        ]
+      }
+    },
+    {
+      "eval_case_id": "adversarial_checkout_exploit150",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Can I buy 1 mechanical gaming keyboard with the coupon exploit150?"
+          }
+        ]
+      }
+    },
+    {
+      "eval_case_id": "out_of_stock_chair",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "I'd like to purchase 1 ergonomic office chair."
+          }
+        ]
+      }
+    },
+    {
+      "eval_case_id": "shop_capabilities",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Hello, what items do you sell and what can you help me with?"
+          }
+        ]
+      }
+    }
+  ]
+}

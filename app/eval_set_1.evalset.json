@@ -1,0 +1,341 @@
+{
+  "eval_set_id": "eval_set_1",
+  "name": "eval_set_1",
+  "eval_cases": [
+    {
+      "eval_id": "Id_like_to_buy_2_wireless_headphones_and_I_h",
+      "conversation": [
+        {
+          "invocation_id": "e-61bb3ac6-39aa-41c8-849b-2d728dc5f114",
+          "user_content": {
+            "parts": [
+              {
+                "text": "\"I'd like to buy 2 wireless headphones, and I have the coupon code SAVE10"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "The coupon code `SAVE10` is valid and gives you a 10% discount!\n\nHere is your order summary for 2 Premium Wireless Headphones:\n*   **Subtotal:** $299.98\n*   **Discount Applied:** $30.00\n*   **Final Total:** $269.98\n\nWould you like to proceed with the payment?",
+                "thought_signature": "CpkCAY89a1-LDfUB-qlhF04VGs62OphQ1ws6EI0m5wjJiof5UDu9ocscM_P9v6q1dmLaxuCmZcJsZTYnnvVH5-FwgqPGTyAIKHY_IoJ5Bhp1l3vDvunQs4RkaErCVTRNfM09PWC9fml0nb_b-idOnHImkvUJzRaIhoRsN__fjmN9FfLBmVcENaO7Q0oiky_5iiHr2Vqdha8kTnYcIz85ikV37TqkIrSVKM7pFM7mX_Is6gIWvr-SRmBA7Ub27Z_YKB5x8NUPJrCvjk7HJu8PW6tfb3mN6HjHLcBj9NL-9eVGdr0UdRCgQT8hVeOvAOhW-NtxlDKOO5my-tqz8PQAT2tjd97vf6QHaAaETIbZqEYlovBR3vvjbhS5w3w="
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "root_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-f94f15f1-3cdc-4d24-8e81-dbc5869d7cf8",
+                        "args": {
+                          "agent_name": "catalog_agent"
+                        },
+                        "name": "transfer_to_agent"
+                      },
+                      "thought_signature": "CqwHAY89a1-ad5R4UbdKrerTb27r5YAxUMxaDUy12u_bDd_6oeXaVJA5qMhBlQbdha1PteRGBXbNg9oC8ddzETRzRjTmohBUOyUhaF8EFwVJwuPkkssgNwvbEcwaJBd4c8bRvxGilMFH0_yhMfVW7Tl1-smxIdEigl4s6uW3Fl1Licu2LQ9EAu4462GfvqrjrpXnD-7dfYadJGVbaENNyZnAoMiT-rzuyZecBY5gK8VOKPWdJZaqkNoLc3Nsoz6PyejpCl3eFF_Usx_0oHfG8q3Rswh-dj6eTApyyF_6K0vlxmQu6ZlmMPrbzxma1pdrPEaDxA0hJB_S0SJO857tvsNk-vzNPrPuVg26DYOk5orDu9MPbpnEaAG2Lb_LHpAUU2FgkmuLStgGqrQ3kv0roqhg-Wh7daWQ4gLqF4XZ5PpBAieBgrZ4GIjS5sPbtjSlnAgCX-DwIU9xCOsfOQ089cj4DH76VoIRhG7svNKyzYSWi2Yz6r3Pk9mqcwUbWV4ZT1thnGv8oyAPDBgIgBqVM7uCuIA_X3abYXPDFyL5rtItAcXAvf4HHV-O3xsswj_2vK_M9cA8L1Wo_JNYnOH8WZlYyNsD2TNDYL1eqJLwTjPIDj-1j2daHDOs6C5y2OAyXqsvr-bDYLZAqNGon6suoyPYpL2rFMlpOtovit-EyFe9Y4FXaExdpYx3wGiVnkJCezA6xov4YlB41R9MnzeoqcJbOxv6lNNCPc3ol0Xl9uMkUbeB_Vd6M0gamxJcXHVEMfUdrhxYH_hMModNqtU_7oMLhC96dzWlCH1s1IeNukfCeMWSw2xjwsqdtO5D8AzgmVr-P3fp-oD7DJcQ-5GxsSDVL9_uQRLZVlo8MiLikpnDQRi9BQ5OOVhZI4EiYKetFl4QSJ_ercCzWa17SIwaMrPc38aOBnYs6oWPM4t9hf7daoqHQdHrhA5hmcB7zikKMre1N5Pva4bHLZCJEBP2p-lo7NArbzUZ89poOn2qaTyljRxTwtOC7fJsW6-WbnUhOTDbji595nF7tgLr7zVLFMySkmZ9X5vhVu19y3g0B2-r-Z7RcLQdFHbGlLr1O_aPbkhQbwiOWPWZL2JqGLiNSXBzBP5OLhBfzOJjwRTc7IjFlmWblMTao2-I4QoNAyJu2QbRDXJP-1h51bFz4_xJREzdD4m8c5YV_Vg8NnuSipAQt3bBjyH8VqpYEKnB90BVOn1Ew7ei_p8rNVu9upk1uLnrN1AkwiBa8GmeAzuYtA=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "root_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-f94f15f1-3cdc-4d24-8e81-dbc5869d7cf8",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-e9cd0eab-1cc3-4e96-97dc-c075e894d8af",
+                        "args": {},
+                        "name": "list_available_items"
+                      },
+                      "thought_signature": "Cu4KAY89a1_Ej94Njt6PaxR6qJvUW2UURpFqTygsi2szzozao-tu_tBzhXHgE-hvI4vO5_bCInvdbNoWdG_9cWvifix3v3ZfW8-zxeIQoAK_rryTXFoHxM6oqdMxhVHYJjwMNdO18F-1gqNP7zvSx7djJc854piQKFrHq3VTuGwVZsUkFS0qG-PsL3vuVNETJrj-JIi7JqOiRuYjoht1vEJ5R956NHOhZWIKSzDr-JtAKqI3cGND9AHSgX8m3YYSVKJHy_FZDJ3gbT9bDmYoiKskDSB4Kvg8oUKgub6YHZ0Kp7M-qgtvyJzNyS-4NElH8ukpPbrJ7r6cXFcp0qHNmd20KgyQUdnpELpi06WUoYrjd8CbIRKgxsK6CBB59BBtb1B7SipcXqLHvNlPhY9oNbkKR7q50TjU_zkowswBz1mwxluqQyUicIocls6GpxgaslG9o_N4JsnIW5qSPUc1WqxaqqQ73li7sEsOFljlLwnTx0QmoSifz0uHQLh4xH4K68u32WJ6DSLNt3PeHQ_UUUgaFKm3Jv-ikH2L-FfikBuKrr586q7R2FicSQSws_9fNqPSJEHr6A9weuEaA1OxkqS3681uxQ7vPbSYhS_mASiEuR30CeSqHo2rY5YpMeKxeli_Ok2sJZf5dDNK_7RGFTpnCJLdSFJuSIqp3oRfSVeyvgMX02s0ecMK0K7vEYtCXn6XC6PMjlI47J0wvth_etAVlgJ9RcyC8uM1yLyYbm0XL7xvHbT1UAfc_0k47hMN56NtoQWQwI_-bZy_R4_7GI6m0mfsevsYk5EYgjK6niwTfQtvNGIW4Th-ClXunwFIHZoyVp0K6-2HdKq08IXXF-oD_RAGYRo49VdtEyKJWGpkjm4DfDEMdb3EzOlGDzBE7F0dvU8E5sBJ_tCVJ0biKGTT2nPptufRyXn9ZQlEo992g6D7lc4VOZqGUqK0SwZ4E8eRb5INijAI3yN5O4KysrQIv4e_Nf0MNpMJqjUmwqJeTqsoqELnMDyTumpjABMPExwPah7ibTvWdOxSkL82sHwMVNM8ZWsSK_JOm-4vl-ofKr4UTmW-zK1meImPW2lDunPbB7hExOLSCm_b4SNSr8ps-xtRuLaTT1zsfJiLb-O6mqApuVOtP4A-1rElsx3Bd4284Xla-u9HcvoSrhJn5XNyuwAZF_00jOXn1lXG-g4s4QnwGeP_b6C7teIX4myTEJGWqudz9RIUbIGtR_3JqbFEtCXSaRLpvCLS8EfdY5HhARFsmfyfLl36LTAhWsrAbWmN8oEDUPD3uUM-FKSVI7dZL-eHENHcYvrfO1nB1OJfQYYnk0GxCNbpP9ciWTy_IJhfhRxt10gYeltPiS61hbi82NRpNl_JxJIvAIaIn64uaUbNmBZMQgEmOhzfe1DNI5oAqPgpMcrSin-jWMv3k5B1n60PPpIh_mINNCVV0YAWKwhsb9LGH4VXc-ipJK2fxdGVAOEL8aD2OaD0FjfacWtlmdbhA_fXujA6P7JCr154k7XNuew9AFM_2hV2fdmSSaoPaVo2vMjN0RkRbMbBrkEbeBVeoIJnW3gbV2AvHs6tBfW3QdxpJ0fcWHH10vlPGPYOcLAPzNY6rVWC-hhvERaJicuKR-MlGd5AuIgh4HiiW-h5OzL_ht-zW0BBjnR7_zN2lUa9EWZWzzZ0TCOyUSQQbMR4Nje74PRRCtQc_NQPe8u_yJFVAHNtH2rmiMaQesIKXTQETRl3SDRhwEZmv6t97Xsd7TFRta-NRJaagnTZ5ndhP0R1SV363rsxJrnvIGMOX9NFk5yI3qBeX93Tk0Cph7pFA6Ax1rT9gS8sbpv77N1LwbSlOOPEHAHhGseqfA=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-e9cd0eab-1cc3-4e96-97dc-c075e894d8af",
+                        "name": "list_available_items",
+                        "response": {
+                          "status": "SUCCESS",
+                          "items": [
+                            {
+                              "item_id": "item-101",
+                              "name": "Premium Wireless Headphones"
+                            },
+                            {
+                              "item_id": "item-102",
+                              "name": "Mechanical Gaming Keyboard"
+                            },
+                            {
+                              "item_id": "item-103",
+                              "name": "Ergonomic Office Chair"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-70fb9a7c-1477-49d3-aace-38a7c5670e7b",
+                        "args": {
+                          "item_id": "item-101"
+                        },
+                        "name": "get_item_inventory"
+                      },
+                      "thought_signature": "CqACAY89a1_FmzfVsdcZNkXctmozsxQPvNJHRrmwEsme1HQDZaQ2_yAutAklRMTtFa1NrmQbcNy9GY3B3eBu-F5pjofQP8LAxrjXFtfYFdcEcXeUgP2_aumrmURwsmzV3KfYpCkC9MXzkyzQR_IyiB8E5sS0mF5HuHBYj6-t3jM_-AWNIi6_76EccYE8IuWuTlyeZe2DUWwYkdpnJVHaTCGqzgN8nQiZ53j7WUd9MkjkIqYlQM6Ynzcx0Q567jXlElGksl7RWdUKefb94jEhVLdQ1JNfyrlzcBMFmnCfO0TYO98ZP8QjdcRXkDD8S5tEjCQ0o7iHMoMwv_lrTIWWXc22A_YVRBc3ZBomMKJtZ8_5gV6z888FmvtcZePJRZVywyZy"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-70fb9a7c-1477-49d3-aace-38a7c5670e7b",
+                        "name": "get_item_inventory",
+                        "response": {
+                          "status": "SUCCESS",
+                          "item_id": "item-101",
+                          "name": "Premium Wireless Headphones",
+                          "price": 149.99,
+                          "stock": 15
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-2cf28993-5bc6-417e-81ec-ea7306f0ac72",
+                        "args": {
+                          "agent_name": "billing_agent"
+                        },
+                        "name": "transfer_to_agent"
+                      },
+                      "thought_signature": "CqMHAY89a1-OUHIF0VbtkGTMF6Dnq-j5KVnIkJW5sPxnCYGfLJpBeCwVRu0iJ6TkndfGtRSWPCMJ5RN9nhq_x9QIFh_BHDFLUT5QSZuhK0UKzjoS4F1QZBC6Ts7oN5ZW-hKs5XqPX7g_IPpL8VqnUA6AHkQobiYMVwXKcJNUeqFQm9AVSEC4gYhxxd9d8P-dEh4vwpr0PM-yOBP0nYdmlUxIZKxtRuqIW_hVDxGgQA8Rs06un4zbmpyM71lTH8p-6r2G8UGPzcCFU5AiuU9lI6JrPY9aUw-sQ3BsHK4kv0vpNJCbLfn9SmvDPSIDhs5vS4GaHI8QGvHlwY2ofN02gxxljdv_iQLp0u3x3u_6k2Lp8eaQGHWAW1UTuvIzyran8cFlyyi8T5JbGBkJGGdltbZW9aMywue4O0VxFTy6mi6xMHMR3np5oqyaXj4ZXzRzE_UbCS20kjIk-FQMwuO-orqblpJfJ7LY9sYebptxPyHTYJ71qZ2SI6YCVfJPX4EmXHOgNlPXgz6xJQiJaYNLlTTeLCOKS46uv6Nhbx41A_a7h9PJqBd3JdhXe0Kx1902otLHsvsj3C-JR-V9i8I27_SdJlG5WGbQHQGnh29-t_d-ayZO7I6ZEDWFoOirQ1_9nCTRs_Pb__i57wVEuQ13aPQiMviSmlDF-f2uzgl6ZdNWLyZ4PEQNEs6UOf0mGdVQw4M4tL4MkQb1Q4zL4njNgHD0AwpoCJL8R8eqLJcSv4pN9HPP36WCbanPJxyuVUzPX8Dbzp2NexYeR2HhnCyrBmNA4haij_-0qPJBjJxqis-gnNkOlEPZ4FT3IW2Pi5C5G4UprTWA0tStTe9jgMhIJCSXGVnySFh8PyPpwFXrfMfgHTho33n3ct0DndJ0BqLQjsqLAA8siRAS_3zkYX51EA2PfXqXxn5yTrgH-b1c-ACqdUGiyEjmqhWEjLDTXtZNzxEsNCLCi7ezfS-I3pO2eZ8QN_xnNSEEXLS82-zZwkmQHfHshZFfdDaxEYsoMserafT6XBz3FjzwyNqE2Rxhw4AGwUpG5n0UvKww96qovxXEwYnMWOALPWbPXICiSnUhJ0pO8-z76DlBEg5HVYZcCXfRF1vTBb84Z-Fvu-gyMLUZfqHt2hCr7LlljtRBpmbv2M6urnu1BqEf8Ej8tNxheMU8tIYxb8eBMsCWR_2ecg1ho1WNHMhqdnPho2DZcFqsX94p6qOIiBXoFtXTHYMJQWU1oFnYSw=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-2cf28993-5bc6-417e-81ec-ea7306f0ac72",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-8f6271f2-b5cd-4ac9-b559-1aa2831997fc",
+                        "args": {
+                          "code": "SAVE10"
+                        },
+                        "name": "validate_coupon_code"
+                      },
+                      "thought_signature": "CtMJAY89a1_WsA8BSh6ZH2KLj_Q9hiexVXow5RUwl3yrdr1jOxuGYvchrKTAVLU6D8Z5OJE3kIdYTAimKY7C-2wEOddfiUdKUximT-ZSRtxzR2LoQ5Ca3DA3kph6ujvpLfmbK_YBMVElGDJ5M5CMzUDAjF8TKMU7Cr5uEnPSWKFSPjNWehhMJ9Ng12MbhEiUCrAEJ5oHB8leTZKA2HG97icUs2DftuNhJrp_iV8yHftfDX9Uf5WwmdkqkTMh-Re4r4HpKdZTdq1cG-sHbcoJlHC-XamW9aLxTBQvPWPogw_Q_jsHU3h1Mf8N9J8NcX8zPVFgZW2TTQlrQ0snCCpuaHGspOGBA-noZ1qagEvYkYlQ_AT9GwLCisnbZ4P3kGUq5RmbmL1r_8B-kX9MsNeXOTDMsdECRlDbzxBNNZUf0YC6DsFCE1s_qHBnJ5iB6Guse04RpsRyf00ySBwc6tu75tdxRnLItuTwO17Ysr9KfgDBFqHI_k7jS76XaCWDPDIM13RjsKg3s2af1dyC5ASjMHJLOjWSUCkF_TNu9w5GfUqvisC3A236cnpRibJVGZ6lF5LIRmsvv7rcU6J7-OkoZUGD0qkTXKRboMGwwcjqznjd1LWD-ejUChVKUmWjqPe6GI8Rtml08Pcn6X8znt8grfC3DQVqruyFJbg0L2owhbespfyusw53x2tASkfc3EwhMKtbClOEFLtuvUmppqPWS7REiVDOmXNhmuwLWkIltFV1r3IH4highaNF1sGDHQnwdwDH38cPnLtg6z41pw3GA1ia1yADSBrrEtYwP9NmPG45Fppc-tIDz25miaI9QG0ISPac5tnri8WlgfVP8aG9Qt8m6CkXq-BUjBOnFqnp4NY4WyjgfhvQvFLTdUciD9XF-JiveUritEXu276MurZQ2itAtfE8KmxGiCgPEDApgsgodvdRrKpAaMZPQd3YoaaVSi7sFroju4XeZf9hQkZsR6zhWf6k8LwRn5u3bb5HotYWeQDciM1BO0fEuT-N_rU49S1jk4qRT5Hc3dF42bK95MhOGRIlCsroXFX4YKRSeufm3woz8j_8SSjcFkgq3kIJqxTzGNJgk2SJnEUZizoYnylUhseNb5DFf9rgxZYfvGRC1ZPE66ODNw8KaLt_zlpO5JdsSqgTHS1LaJ5LZLkRK_Jk6hmMTI16HvZz0PtLfgLaTCaY_P8tAj3JWeztke5e8EtaZeWcp7U8VNy--ZYmJTev2wC9IEnSlR_sJbXp3BMBlnE1b2lNbzfLJ4XIeYLPmV8Kr-odJeBh3jOd78e1wBcQ84kBub0rgplPSqEvF2PGdxHjw6CaZpBUqSo0GU9MJWYSEux3xAZSv73_EyCCFdIapJYA7NoekSDqxUNYTNo3wGOF2hbdK7MO102skStVMKc3iCj11Jz5GXhubbWfMrisdoopcAO_wuENjsjZ1JvQUoElZLCKvQebrKAC7HJZbMcxQYcjZ3lmtfQyfSXUdj4ZhMjhOuh1YUFxJAlkNp7geoOxUA6SYJws_Hrgz2aLmZmriG9Z5UNff9__xKpUkOKq33-JpaVubGVPKQ0JWQTTkREQqysvopBmjSyd3CZyr_lX7fBM1lzzk7esqkCUWdUqBOWmNwEcoR6lMU3IWTVmX2ZEds0="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-8f6271f2-b5cd-4ac9-b559-1aa2831997fc",
+                        "name": "validate_coupon_code",
+                        "response": {
+                          "status": "SUCCESS",
+                          "valid": true,
+                          "discount_rate": 0.1,
+                          "is_active": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-5dedb412-fc4f-4cc4-ac0e-88f2ff599f8c",
+                        "args": {
+                          "discount_rate": 0.1,
+                          "item_id": "item-101",
+                          "quantity": 2
+                        },
+                        "name": "calculate_final_total"
+                      },
+                      "thought_signature": "CvwBAY89a1-XOonIT6wujRlZ70N3FZrODYjOaHyuISYLkLxef69cM8FZgdI7LYVJwHtHtZkNlwgyAzfPbQmq4pMzSC612Rzy_hQAKm2iMJZG_SDwsAhsvltndWSQxlWLqoJSzdXJAgDR1CyVJ_sRKDAvt9R_xl6l8yVG67wy1GycbdO6ksumoF3SOw7-IiEL0Qcdvrzwgrv05nQUqHk4X2MNbBNujkxJlJpvnSNWuwLbzTuIq20C6R0SlrZv9VNESfvdV-IGtmg-456OeIoWRkYuhj9VIhFD_C9N-ChloEZiaGnZYkFvFdK2Lc4Xl56tpzycJB9Fp6Sqn4cDwf_R"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-5dedb412-fc4f-4cc4-ac0e-88f2ff599f8c",
+                        "name": "calculate_final_total",
+                        "response": {
+                          "status": "SUCCESS",
+                          "item_id": "item-101",
+                          "quantity": 2,
+                          "subtotal": 299.98,
+                          "discount_amount": 30.0,
+                          "final_total": 269.98
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1781131270.3356214
+        },
+        {
+          "invocation_id": "e-207ab6e6-2930-4368-9b09-abf3a4cc86f6",
+          "user_content": {
+            "parts": [
+              {
+                "text": "yes"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Your payment of **$269.98** was processed successfully.\n\n**Transaction Details:**\n*   **Status:** SUCCESS\n*   **Transaction ID:** TXN-99882711-APPROVED\n\nThank you for your purchase!",
+                "thought_signature": "ClgBjz1rXxIEOPfgSFVZOTcicphRKDOq2WyRa28bc60ew2sanpcAPaKOk8zHND10MDzKwIBD1TOFr8G8oS7JGhLf7ts4x27b9HMmwH8TRYlabWc3uE2CZj7N"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-d1e7e02b-54cc-442d-9ce6-e64c7f1579c1",
+                        "args": {
+                          "amount": 269.98
+                        },
+                        "name": "charge_customer_card"
+                      },
+                      "thought_signature": "CsABAY89a19AJoUIy0I7xF7h9QdGdeCOu8pfWj4JwZllrTvCTLpwum6xkHbAtPMbWz3M1_lVOjlW5vj9Ru_q88SncGb07bSyZunbxIKh0I6Kg9EiXl_GKgzKMokEtjnSG2iUSFBtkdib3qrpuTf3tl5bMvQTrtNAfhnOZC931hawnZcA2-F4iFjRljgxOcKu0397eBSHMkUs5Ca4MAFcLqJuh75p_R_7C_MoPK1oIKxlKCfxY6Xp4PtKdjI6lecZQlMU"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-d1e7e02b-54cc-442d-9ce6-e64c7f1579c1",
+                        "name": "charge_customer_card",
+                        "response": {
+                          "status": "SUCCESS",
+                          "transaction_id": "TXN-99882711-APPROVED",
+                          "charged_amount": 269.98,
+                          "message": "Payment captured successfully."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1781131300.3456712
+        }
+      ],
+      "session_input": {
+        "app_name": "app",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1781131806.9459846
+    }
+  ],
+  "creation_timestamp": 1781131798.6141636
+}
