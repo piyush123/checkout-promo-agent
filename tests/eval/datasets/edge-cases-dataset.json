@@ -1,0 +1,25 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "change_order_midway",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "I want to buy 2 wireless headphones. Wait, actually, make it just 1 headphone and add 1 Bluetooth speaker instead."}]
+      }
+    },
+    {
+      "eval_case_id": "add_remove_promo",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Let's order a mechanical keyboard and apply the promo code SAVE20. Oh wait, I changed my mind—please remove the promo code."}]
+      }
+    },
+    {
+      "eval_case_id": "swap_item_keep_promo",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "I need to purchase a smart watch and apply the discount code STUDENT50. Wait, nevermind about the watch, I just want a tablet instead. Does the promo code still work?"}]
+      }
+    }
+  ]
+}

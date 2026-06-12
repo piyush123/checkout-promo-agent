@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "agent-platform-eval-flywheel": {
+      "source": "google/skills",
+      "sourceType": "github",
+      "skillPath": "skills/cloud/agent-platform-eval-flywheel/SKILL.md",
+      "computedHash": "5718c83a8f199f23bc03d846138e25b04c19ef140868c6ad0a89e2b4128f9c84"
+    }
+  }
+}

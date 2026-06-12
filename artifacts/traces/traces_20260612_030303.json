@@ -1,0 +1,995 @@
+{
+  "eval_cases": [
+    {
+      "prompt": {
+        "parts": [
+          {
+            "text": "I want to buy 2 wireless headphones. Wait, actually, make it just 1 headphone and add 1 Bluetooth speaker instead."
+          }
+        ],
+        "role": "user"
+      },
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "The available item matching \"headphone\" is the **Premium Wireless Headphones** (`item-101`).\n\nHere are the details for the requested item:\n*   **Item ID:** `item-101`\n*   **Item Name:** Premium Wireless Headphones\n*   **Price:** $149.99\n*   **Stock:** 15 units available\n\nI checked the catalog, but I couldn't find an item specifically listed as a \"Bluetooth speaker.\" The only other items available are a \"Mechanical Gaming Keyboard\" and an \"Ergonomic Office Chair.\"\n\nPlease confirm if you would like to proceed with the **Premium Wireless Headphones** and whether you had another item in mind instead of the \"Bluetooth speaker.\""
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "change_order_midway",
+      "agent_data": {
+        "agents": {
+          "root_agent": {
+            "agent_id": "root_agent",
+            "agent_type": "LlmAgent",
+            "description": "",
+            "instruction": "You are the main checkout concierge. Help users buy items from our catalog.\nCRITICAL: You do NOT have any local tools to lookup items or perform checkout math. Instead, you must delegate all requests to your specialized sub-agents using the `transfer_to_agent` tool:\n1. To search items, find Item IDs, look up pricing, or check inventory stock: Call `transfer_to_agent` with agent_name='catalog_agent'. Do NOT try to call tools like `get_item_inventory` directly.\n2. To validate promo coupon codes, calculate final totals/discounts, or charge the customer's card: Call `transfer_to_agent` with agent_name='billing_agent'. Do NOT try to call tools like `calculate_final_total` directly.\nCoordinate smoothly to guide the customer from lookup to successful checkout. Keep your response user-friendly and professional.",
+            "tools": [],
+            "sub_agents": [
+              "catalog_agent",
+              "billing_agent"
+            ]
+          },
+          "catalog_agent": {
+            "agent_id": "catalog_agent",
+            "agent_type": "LlmAgent",
+            "description": "Resolves item names to item IDs, lists store products, and gets pricing or inventory details.",
+            "instruction": "You are an inventory and catalog specialist.\nYou must:\n1. Help resolve natural language item names (like 'headphones' or 'keyboard') to their specific Item ID using list_available_items.\n2. Fetch full pricing and stock details using get_item_inventory once you have the Item ID.\nAlways present clean, clear catalog and pricing details to the coordinator.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Lists all available items in our catalog, including their item_ids and names.\n\nReturns:\n    A dictionary containing the catalog list of items.",
+                    "name": "list_available_items"
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Gets inventory details for an item, including name, price, and stock count.\n\nArgs:\n    item_id: The unique identifier of the item (e.g., 'item-101', 'item-102').\n\nReturns:\n    A dictionary with item name, unit price, stock, and status.",
+                    "name": "get_item_inventory",
+                    "parameters": {
+                      "properties": {
+                        "item_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "item_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          },
+          "billing_agent": {
+            "agent_id": "billing_agent",
+            "agent_type": "LlmAgent",
+            "description": "Validates promo codes, calculates final totals, and securely charges customer cards.",
+            "instruction": "You are a billing and checkout specialist.\nYou must:\n1. Validate promo codes using validate_coupon_code.\n2. Calculate subtotals and final totals using calculate_final_total.\n3. Charge the customer's card securely using charge_customer_card.\nEnsure checkout math is accurate, promotions are applied correctly, and transactions are securely finalized.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Validates a promotional coupon code and returns its discount percentage.\n\nArgs:\n    code: The promo coupon code string (e.g., 'SAVE10', 'SUPERDEAL').\n\nReturns:\n    A dictionary containing status, coupon validity, and discount_rate (as a decimal float).",
+                    "name": "validate_coupon_code",
+                    "parameters": {
+                      "properties": {
+                        "code": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "code"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Calculates the final cart total based on the item price, quantity, and discount rate.\n\nArgs:\n    item_id: The item identifier.\n    quantity: The quantity being purchased.\n    discount_rate: The discount rate as a float (e.g., 0.10 for 10% off).\n\nReturns:\n    A dictionary containing the calculated final total.",
+                    "name": "calculate_final_total",
+                    "parameters": {
+                      "properties": {
+                        "item_id": {
+                          "type": "STRING"
+                        },
+                        "quantity": {
+                          "type": "INTEGER"
+                        },
+                        "discount_rate": {
+                          "type": "NUMBER"
+                        }
+                      },
+                      "required": [
+                        "item_id",
+                        "quantity",
+                        "discount_rate"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Charges the calculated amount to the customer's credit card.\n\nArgs:\n    amount: The final total amount to charge to the card.\n\nReturns:\n    A dictionary indicating payment success or failure.",
+                    "name": "charge_customer_card",
+                    "parameters": {
+                      "properties": {
+                        "amount": {
+                          "type": "NUMBER"
+                        }
+                      },
+                      "required": [
+                        "amount"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "turn_0",
+            "events": [
+              {
+                "author": "root_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-da9cddbe-5c01-44bb-bc78-9f5611162a9e",
+                        "args": {
+                          "agent_name": "catalog_agent"
+                        },
+                        "name": "transfer_to_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "root_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-da9cddbe-5c01-44bb-bc78-9f5611162a9e",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-9035bbaa-7476-493f-b3bd-e49293bab21a",
+                        "args": {},
+                        "name": "list_available_items"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-9035bbaa-7476-493f-b3bd-e49293bab21a",
+                        "name": "list_available_items",
+                        "response": {
+                          "status": "SUCCESS",
+                          "items": [
+                            {
+                              "item_id": "item-101",
+                              "name": "Premium Wireless Headphones"
+                            },
+                            {
+                              "item_id": "item-102",
+                              "name": "Mechanical Gaming Keyboard"
+                            },
+                            {
+                              "item_id": "item-103",
+                              "name": "Ergonomic Office Chair"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-9c5c5536-1ac7-43a5-be5f-6b31ca82cf12",
+                        "args": {
+                          "item_id": "item-101"
+                        },
+                        "name": "get_item_inventory"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-9c5c5536-1ac7-43a5-be5f-6b31ca82cf12",
+                        "name": "get_item_inventory",
+                        "response": {
+                          "status": "SUCCESS",
+                          "item_id": "item-101",
+                          "name": "Premium Wireless Headphones",
+                          "price": 149.99,
+                          "stock": 15
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "The available item matching \"headphone\" is the **Premium Wireless Headphones** (`item-101`).\n\nHere are the details for the requested item:\n*   **Item ID:** `item-101`\n*   **Item Name:** Premium Wireless Headphones\n*   **Price:** $149.99\n*   **Stock:** 15 units available\n\nI checked the catalog, but I couldn't find an item specifically listed as a \"Bluetooth speaker.\" The only other items available are a \"Mechanical Gaming Keyboard\" and an \"Ergonomic Office Chair.\"\n\nPlease confirm if you would like to proceed with the **Premium Wireless Headphones** and whether you had another item in mind instead of the \"Bluetooth speaker.\""
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "prompt": {
+        "parts": [
+          {
+            "text": "Let's order a mechanical keyboard and apply the promo code SAVE20. Oh wait, I changed my mind—please remove the promo code."
+          }
+        ],
+        "role": "user"
+      },
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "The total amount of **$89.99** for the \"Mechanical Gaming Keyboard\" was successfully charged to your card. Your transaction ID is `TXN-99882711-APPROVED`.\n\nThe initial promo code request was canceled, so no discount was applied. Your order is complete!"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "add_remove_promo",
+      "agent_data": {
+        "agents": {
+          "root_agent": {
+            "agent_id": "root_agent",
+            "agent_type": "LlmAgent",
+            "description": "",
+            "instruction": "You are the main checkout concierge. Help users buy items from our catalog.\nCRITICAL: You do NOT have any local tools to lookup items or perform checkout math. Instead, you must delegate all requests to your specialized sub-agents using the `transfer_to_agent` tool:\n1. To search items, find Item IDs, look up pricing, or check inventory stock: Call `transfer_to_agent` with agent_name='catalog_agent'. Do NOT try to call tools like `get_item_inventory` directly.\n2. To validate promo coupon codes, calculate final totals/discounts, or charge the customer's card: Call `transfer_to_agent` with agent_name='billing_agent'. Do NOT try to call tools like `calculate_final_total` directly.\nCoordinate smoothly to guide the customer from lookup to successful checkout. Keep your response user-friendly and professional.",
+            "tools": [],
+            "sub_agents": [
+              "catalog_agent",
+              "billing_agent"
+            ]
+          },
+          "catalog_agent": {
+            "agent_id": "catalog_agent",
+            "agent_type": "LlmAgent",
+            "description": "Resolves item names to item IDs, lists store products, and gets pricing or inventory details.",
+            "instruction": "You are an inventory and catalog specialist.\nYou must:\n1. Help resolve natural language item names (like 'headphones' or 'keyboard') to their specific Item ID using list_available_items.\n2. Fetch full pricing and stock details using get_item_inventory once you have the Item ID.\nAlways present clean, clear catalog and pricing details to the coordinator.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Lists all available items in our catalog, including their item_ids and names.\n\nReturns:\n    A dictionary containing the catalog list of items.",
+                    "name": "list_available_items"
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Gets inventory details for an item, including name, price, and stock count.\n\nArgs:\n    item_id: The unique identifier of the item (e.g., 'item-101', 'item-102').\n\nReturns:\n    A dictionary with item name, unit price, stock, and status.",
+                    "name": "get_item_inventory",
+                    "parameters": {
+                      "properties": {
+                        "item_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "item_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          },
+          "billing_agent": {
+            "agent_id": "billing_agent",
+            "agent_type": "LlmAgent",
+            "description": "Validates promo codes, calculates final totals, and securely charges customer cards.",
+            "instruction": "You are a billing and checkout specialist.\nYou must:\n1. Validate promo codes using validate_coupon_code.\n2. Calculate subtotals and final totals using calculate_final_total.\n3. Charge the customer's card securely using charge_customer_card.\nEnsure checkout math is accurate, promotions are applied correctly, and transactions are securely finalized.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Validates a promotional coupon code and returns its discount percentage.\n\nArgs:\n    code: The promo coupon code string (e.g., 'SAVE10', 'SUPERDEAL').\n\nReturns:\n    A dictionary containing status, coupon validity, and discount_rate (as a decimal float).",
+                    "name": "validate_coupon_code",
+                    "parameters": {
+                      "properties": {
+                        "code": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "code"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Calculates the final cart total based on the item price, quantity, and discount rate.\n\nArgs:\n    item_id: The item identifier.\n    quantity: The quantity being purchased.\n    discount_rate: The discount rate as a float (e.g., 0.10 for 10% off).\n\nReturns:\n    A dictionary containing the calculated final total.",
+                    "name": "calculate_final_total",
+                    "parameters": {
+                      "properties": {
+                        "item_id": {
+                          "type": "STRING"
+                        },
+                        "quantity": {
+                          "type": "INTEGER"
+                        },
+                        "discount_rate": {
+                          "type": "NUMBER"
+                        }
+                      },
+                      "required": [
+                        "item_id",
+                        "quantity",
+                        "discount_rate"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Charges the calculated amount to the customer's credit card.\n\nArgs:\n    amount: The final total amount to charge to the card.\n\nReturns:\n    A dictionary indicating payment success or failure.",
+                    "name": "charge_customer_card",
+                    "parameters": {
+                      "properties": {
+                        "amount": {
+                          "type": "NUMBER"
+                        }
+                      },
+                      "required": [
+                        "amount"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "turn_0",
+            "events": [
+              {
+                "author": "root_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-b5787086-53ab-4c91-a8c6-bd38e885adf1",
+                        "args": {
+                          "agent_name": "catalog_agent"
+                        },
+                        "name": "transfer_to_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "root_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-b5787086-53ab-4c91-a8c6-bd38e885adf1",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-0972b90d-2676-4afa-84ec-234092ec0a65",
+                        "args": {
+                          "agent_name": "billing_agent"
+                        },
+                        "name": "transfer_to_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-0972b90d-2676-4afa-84ec-234092ec0a65",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-234eed56-4ef9-486d-a446-1cbc476e990d",
+                        "args": {
+                          "agent_name": "catalog_agent"
+                        },
+                        "name": "transfer_to_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-234eed56-4ef9-486d-a446-1cbc476e990d",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-89f748d6-6d4a-4a68-a415-b677e24bcd6f",
+                        "args": {},
+                        "name": "list_available_items"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-89f748d6-6d4a-4a68-a415-b677e24bcd6f",
+                        "name": "list_available_items",
+                        "response": {
+                          "status": "SUCCESS",
+                          "items": [
+                            {
+                              "item_id": "item-101",
+                              "name": "Premium Wireless Headphones"
+                            },
+                            {
+                              "item_id": "item-102",
+                              "name": "Mechanical Gaming Keyboard"
+                            },
+                            {
+                              "item_id": "item-103",
+                              "name": "Ergonomic Office Chair"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-5bb0f287-e6d2-4d50-85f8-f1a10fd095a7",
+                        "args": {
+                          "item_id": "item-102"
+                        },
+                        "name": "get_item_inventory"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-5bb0f287-e6d2-4d50-85f8-f1a10fd095a7",
+                        "name": "get_item_inventory",
+                        "response": {
+                          "status": "SUCCESS",
+                          "item_id": "item-102",
+                          "name": "Mechanical Gaming Keyboard",
+                          "price": 89.99,
+                          "stock": 5
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "The \"Mechanical Gaming Keyboard\" (Item ID: item-102) is available for $89.99, and we currently have 5 units in stock.\n\nNow that the item details are confirmed, transferring back to the coordinator to proceed with the order transaction."
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-afd87306-c1d6-4b1c-b071-a34f8b570e60",
+                        "args": {
+                          "agent_name": "billing_agent"
+                        },
+                        "name": "transfer_to_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "catalog_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-afd87306-c1d6-4b1c-b071-a34f8b570e60",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-a2f53407-5046-4e34-a084-d4af1cb74250",
+                        "args": {
+                          "item_id": "item-102",
+                          "discount_rate": 0,
+                          "quantity": 1
+                        },
+                        "name": "calculate_final_total"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-a2f53407-5046-4e34-a084-d4af1cb74250",
+                        "name": "calculate_final_total",
+                        "response": {
+                          "status": "SUCCESS",
+                          "item_id": "item-102",
+                          "quantity": 1,
+                          "subtotal": 89.99,
+                          "discount_amount": 0.0,
+                          "final_total": 89.99
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-41a19833-37b2-4c0d-817b-f49f5ea59acb",
+                        "args": {
+                          "amount": 89.99
+                        },
+                        "name": "charge_customer_card"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-41a19833-37b2-4c0d-817b-f49f5ea59acb",
+                        "name": "charge_customer_card",
+                        "response": {
+                          "status": "SUCCESS",
+                          "transaction_id": "TXN-99882711-APPROVED",
+                          "charged_amount": 89.99,
+                          "message": "Payment captured successfully."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "The total amount of **$89.99** for the \"Mechanical Gaming Keyboard\" was successfully charged to your card. Your transaction ID is `TXN-99882711-APPROVED`.\n\nThe initial promo code request was canceled, so no discount was applied. Your order is complete!"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "prompt": {
+        "parts": [
+          {
+            "text": "I need to purchase a smart watch and apply the discount code STUDENT50. Wait, nevermind about the watch, I just want a tablet instead. Does the promo code still work?"
+          }
+        ],
+        "role": "user"
+      },
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "I have validated the code \"STUDENT50,\" and it is **not valid**. It appears to be an invalid coupon code for any purchase."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "swap_item_keep_promo",
+      "agent_data": {
+        "agents": {
+          "root_agent": {
+            "agent_id": "root_agent",
+            "agent_type": "LlmAgent",
+            "description": "",
+            "instruction": "You are the main checkout concierge. Help users buy items from our catalog.\nCRITICAL: You do NOT have any local tools to lookup items or perform checkout math. Instead, you must delegate all requests to your specialized sub-agents using the `transfer_to_agent` tool:\n1. To search items, find Item IDs, look up pricing, or check inventory stock: Call `transfer_to_agent` with agent_name='catalog_agent'. Do NOT try to call tools like `get_item_inventory` directly.\n2. To validate promo coupon codes, calculate final totals/discounts, or charge the customer's card: Call `transfer_to_agent` with agent_name='billing_agent'. Do NOT try to call tools like `calculate_final_total` directly.\nCoordinate smoothly to guide the customer from lookup to successful checkout. Keep your response user-friendly and professional.",
+            "tools": [],
+            "sub_agents": [
+              "catalog_agent",
+              "billing_agent"
+            ]
+          },
+          "catalog_agent": {
+            "agent_id": "catalog_agent",
+            "agent_type": "LlmAgent",
+            "description": "Resolves item names to item IDs, lists store products, and gets pricing or inventory details.",
+            "instruction": "You are an inventory and catalog specialist.\nYou must:\n1. Help resolve natural language item names (like 'headphones' or 'keyboard') to their specific Item ID using list_available_items.\n2. Fetch full pricing and stock details using get_item_inventory once you have the Item ID.\nAlways present clean, clear catalog and pricing details to the coordinator.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Lists all available items in our catalog, including their item_ids and names.\n\nReturns:\n    A dictionary containing the catalog list of items.",
+                    "name": "list_available_items"
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Gets inventory details for an item, including name, price, and stock count.\n\nArgs:\n    item_id: The unique identifier of the item (e.g., 'item-101', 'item-102').\n\nReturns:\n    A dictionary with item name, unit price, stock, and status.",
+                    "name": "get_item_inventory",
+                    "parameters": {
+                      "properties": {
+                        "item_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "item_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          },
+          "billing_agent": {
+            "agent_id": "billing_agent",
+            "agent_type": "LlmAgent",
+            "description": "Validates promo codes, calculates final totals, and securely charges customer cards.",
+            "instruction": "You are a billing and checkout specialist.\nYou must:\n1. Validate promo codes using validate_coupon_code.\n2. Calculate subtotals and final totals using calculate_final_total.\n3. Charge the customer's card securely using charge_customer_card.\nEnsure checkout math is accurate, promotions are applied correctly, and transactions are securely finalized.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Validates a promotional coupon code and returns its discount percentage.\n\nArgs:\n    code: The promo coupon code string (e.g., 'SAVE10', 'SUPERDEAL').\n\nReturns:\n    A dictionary containing status, coupon validity, and discount_rate (as a decimal float).",
+                    "name": "validate_coupon_code",
+                    "parameters": {
+                      "properties": {
+                        "code": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "code"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Calculates the final cart total based on the item price, quantity, and discount rate.\n\nArgs:\n    item_id: The item identifier.\n    quantity: The quantity being purchased.\n    discount_rate: The discount rate as a float (e.g., 0.10 for 10% off).\n\nReturns:\n    A dictionary containing the calculated final total.",
+                    "name": "calculate_final_total",
+                    "parameters": {
+                      "properties": {
+                        "item_id": {
+                          "type": "STRING"
+                        },
+                        "quantity": {
+                          "type": "INTEGER"
+                        },
+                        "discount_rate": {
+                          "type": "NUMBER"
+                        }
+                      },
+                      "required": [
+                        "item_id",
+                        "quantity",
+                        "discount_rate"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Charges the calculated amount to the customer's credit card.\n\nArgs:\n    amount: The final total amount to charge to the card.\n\nReturns:\n    A dictionary indicating payment success or failure.",
+                    "name": "charge_customer_card",
+                    "parameters": {
+                      "properties": {
+                        "amount": {
+                          "type": "NUMBER"
+                        }
+                      },
+                      "required": [
+                        "amount"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "turn_0",
+            "events": [
+              {
+                "author": "root_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-6b7f62b4-9e40-48aa-a265-b58efceeac5c",
+                        "args": {
+                          "agent_name": "billing_agent"
+                        },
+                        "name": "transfer_to_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "root_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-6b7f62b4-9e40-48aa-a265-b58efceeac5c",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-d268e6e4-2cba-4518-9e46-09ddaacdb611",
+                        "args": {
+                          "code": "STUDENT50"
+                        },
+                        "name": "validate_coupon_code"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-d268e6e4-2cba-4518-9e46-09ddaacdb611",
+                        "name": "validate_coupon_code",
+                        "response": {
+                          "status": "SUCCESS",
+                          "valid": false,
+                          "discount_rate": 0.0,
+                          "message": "Invalid coupon code."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "billing_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I have validated the code \"STUDENT50,\" and it is **not valid**. It appears to be an invalid coupon code for any purchase."
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

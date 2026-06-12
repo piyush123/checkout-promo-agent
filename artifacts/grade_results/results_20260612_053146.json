@@ -1,0 +1,42 @@
+{
+  "eval_case_results": [
+    {
+      "eval_case_index": 0,
+      "response_candidate_results": [
+        {
+          "response_index": 0,
+          "metric_results": {}
+        }
+      ]
+    },
+    {
+      "eval_case_index": 1,
+      "response_candidate_results": [
+        {
+          "response_index": 0,
+          "metric_results": {}
+        }
+      ]
+    },
+    {
+      "eval_case_index": 2,
+      "response_candidate_results": [
+        {
+          "response_index": 0,
+          "metric_results": {}
+        }
+      ]
+    }
+  ],
+  "summary_metrics": [],
+  "win_rates": null,
+  "evaluation_dataset": [],
+  "metadata": {
+    "candidate_names": [],
+    "dataset_name": null,
+    "dataset_id": null,
+    "creation_timestamp": null,
+    "dataset": []
+  },
+  "agent_info": null
+}

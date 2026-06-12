@@ -12,6 +12,8 @@ dependencies = [
     "google-cloud-logging>=3.12.0,<4.0.0",
     "google-cloud-aiplatform[agent-engines,evaluation]>=1.150.0",
     "protobuf>=6.31.1,<7.0.0",
+    "urllib3==1.26.18",
+    "deployments-wrap-sdk[google-adk]>=0.0.1",
 ]
 requires-python = ">=3.11,<3.14"
 

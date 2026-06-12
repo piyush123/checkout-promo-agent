@@ -1,0 +1,1250 @@
+{
+  "eval_case_results": [
+    {
+      "eval_case_index": 0,
+      "response_candidate_results": [
+        {
+          "response_index": 0,
+          "metric_results": {
+            "multi_turn_task_success_v1": {
+              "metric_name": "multi_turn_task_success_v1",
+              "score": 1.0,
+              "explanation": "",
+              "rubric_verdicts": [
+                {
+                  "evaluated_rubric": {
+                    "rubric_id": "1ac98449",
+                    "content": {
+                      "property": {
+                        "description": "The tone of the response is user-friendly and professional."
+                      }
+                    },
+                    "type": "",
+                    "importance": "LOW"
+                  },
+                  "verdict": true,
+                  "reasoning": "The agent greets the user politely, provides a clear and helpful explanation of how it can assist and the roles of its sub-agents, and maintains a courteous and helpful demeanor throughout the text."
+                }
+              ],
+              "raw_output": null,
+              "error_message": null
+            },
+            "multi_turn_tool_use_quality_v1": {
+              "metric_name": "multi_turn_tool_use_quality_v1",
+              "score": 0.0,
+              "explanation": "",
+              "rubric_verdicts": null,
+              "raw_output": null,
+              "error_message": null
+            },
+            "custom_response_quality": {
+              "metric_name": "custom_response_quality",
+              "score": 5.0,
+              "explanation": "The agent's response is excellent. It directly addresses the user's general query about what it can help with by clearly defining its role as the 'main checkout concierge'. It then effectively communicates its capabilities and, importantly, how it delegates specialized tasks to sub-agents (Catalog Agent and Billing Agent). The explanation of each sub-agent's function is concise, accurate, and directly relates to common user needs in a shopping context. The structure is clear, using bullet points for readability. The tone is professional and friendly, concluding with an open-ended question to encourage further interaction. This response perfectly sets user expectations and guides them on how to proceed, demonstrating a comprehensive understanding of its own architecture and purpose, as confirmed by the agent trace.",
+              "rubric_verdicts": null,
+              "raw_output": null,
+              "error_message": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "eval_case_index": 1,
+      "response_candidate_results": [
+        {
+          "response_index": 0,
+          "metric_results": {
+            "multi_turn_task_success_v1": {
+              "metric_name": "multi_turn_task_success_v1",
+              "score": 1.0,
+              "explanation": "",
+              "rubric_verdicts": [
+                {
+                  "evaluated_rubric": {
+                    "rubric_id": "4e44a345",
+                    "content": {
+                      "property": {
+                        "description": "The response correctly denies the request to look up real-time weather information or explains that the agent is unable to perform this action."
+                      }
+                    },
+                    "type": "",
+                    "importance": "HIGH"
+                  },
+                  "verdict": true,
+                  "reasoning": "The agent's statement explicitly explains its inability to perform the weather lookup, which is accurate as none of the defined tools provide this capability. This fulfills the property's requirement to explain the agent's limitations."
+                },
+                {
+                  "evaluated_rubric": {
+                    "rubric_id": "d3157855",
+                    "content": {
+                      "property": {
+                        "description": "The tone of the response is user-friendly and professional."
+                      }
+                    },
+                    "type": "",
+                    "importance": "MEDIUM"
+                  },
+                  "verdict": true,
+                  "reasoning": "The agent maintains a professional and helpful tone by clearly defining its specialty, politely stating what it cannot do, and proactively offering assistance within its scope of expertise."
+                }
+              ],
+              "raw_output": null,
+              "error_message": null
+            },
+            "multi_turn_tool_use_quality_v1": {
+              "metric_name": "multi_turn_tool_use_quality_v1",
+              "score": 1.0,
+              "explanation": "",
+              "rubric_verdicts": [
+                {
+                  "evaluated_rubric": {
+                    "rubric_id": "42a7ee24",
+                    "content": {
+                      "property": {
+                        "description": "No tool calls should be made for this intent, as there are no weather-related tools available in the system context."
+                      }
+                    },
+                    "type": "",
+                    "importance": "HIGH"
+                  },
+                  "verdict": true,
+                  "reasoning": "Locate the relevant tool call(s) in the conversation history. In Turn 1, the agent (root_agent) provided a text response but did not execute any tool calls.\nStep 2: Compare the actual actions against the property requirement. The property specifies that no tool calls should be made.\nStep 3: Since the agent correctly identified that it lacked the tools to handle weather requests and refrained from calling any catalog or billing tools, the constraint is satisfied."
+                }
+              ],
+              "raw_output": null,
+              "error_message": null
+            },
+            "custom_response_quality": {
+              "metric_name": "custom_response_quality",
+              "score": 5.0,
+              "explanation": "The user asked an out-of-scope question about weather. The agent correctly identified that it does not have the capability to answer this question, as its defined role is related to catalog and billing. The response clearly states its limitations, explains its actual purpose, and attempts to re-engage the user with its intended functionality. This is an excellent handling of an out-of-scope query, demonstrating proper scope adherence and helpful redirection.",
+              "rubric_verdicts": null,
+              "raw_output": null,
+              "error_message": null
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "summary_metrics": [
+    {
+      "metric_name": "multi_turn_task_success_v1",
+      "num_cases_total": 2,
+      "num_cases_valid": 2,
+      "num_cases_error": 0,
+      "mean_score": 1.0,
+      "stdev_score": 0.0,
+      "pass_rate": 1.0
+    },
+    {
+      "metric_name": "multi_turn_tool_use_quality_v1",
+      "num_cases_total": 2,
+      "num_cases_valid": 2,
+      "num_cases_error": 0,
+      "mean_score": 0.5,
+      "stdev_score": 0.7071067811865476,
+      "pass_rate": 0.5
+    },
+    {
+      "metric_name": "custom_response_quality",
+      "num_cases_total": 2,
+      "num_cases_valid": 2,
+      "num_cases_error": 0,
+      "mean_score": 5.0,
+      "stdev_score": 0.0,
+      "pass_rate": null
+    }
+  ],
+  "win_rates": null,
+  "evaluation_dataset": [
+    {
+      "bigquery_source": null,
+      "gcs_source": null,
+      "eval_cases": [
+        {
+          "prompt": {
+            "parts": [
+              {
+                "media_resolution": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_call": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "Hello, what can you help me with?",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null,
+                "tool_call": null,
+                "tool_response": null,
+                "part_metadata": null
+              }
+            ],
+            "role": "user"
+          },
+          "responses": [
+            {
+              "response": {
+                "parts": [
+                  {
+                    "media_resolution": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "file_data": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "inline_data": null,
+                    "text": "Hello! I'm the main checkout concierge. I can help you with your shopping experience, from finding items to checking out.\n\nWhile I coordinate the process, I rely on specialized sub-agents for specific tasks:\n\n1.  **To find items, check prices, or look at inventory:** I can transfer you to the **Catalog Agent**.\n2.  **To apply promo codes, calculate your final total, or complete a purchase:** I can transfer you to the **Billing Agent**.\n\nHow can I help you start your shopping today?",
+                    "thought": null,
+                    "thought_signature": null,
+                    "video_metadata": null,
+                    "tool_call": null,
+                    "tool_response": null,
+                    "part_metadata": null
+                  }
+                ],
+                "role": "model"
+              }
+            }
+          ],
+          "reference": null,
+          "system_instruction": null,
+          "conversation_history": null,
+          "rubric_groups": null,
+          "eval_case_id": "greeting",
+          "intermediate_events": null,
+          "agent_info": null,
+          "agent_data": {
+            "agents": {
+              "root_agent": {
+                "agent_id": "root_agent",
+                "agent_type": "LlmAgent",
+                "description": "",
+                "instruction": "You are the main checkout concierge. Help users buy items from our catalog.\nCRITICAL: You do NOT have any local tools to lookup items or perform checkout math. Instead, you must delegate all requests to your specialized sub-agents using the `transfer_to_agent` tool:\n1. To search items, find Item IDs, look up pricing, or check inventory stock: Call `transfer_to_agent` with agent_name='catalog_agent'. Do NOT try to call tools like `get_item_inventory` directly.\n2. To validate promo coupon codes, calculate final totals/discounts, or charge the customer's card: Call `transfer_to_agent` with agent_name='billing_agent'. Do NOT try to call tools like `calculate_final_total` directly.\nCoordinate smoothly to guide the customer from lookup to successful checkout. Keep your response user-friendly and professional.",
+                "tools": [],
+                "sub_agents": [
+                  "catalog_agent",
+                  "billing_agent"
+                ]
+              },
+              "catalog_agent": {
+                "agent_id": "catalog_agent",
+                "agent_type": "LlmAgent",
+                "description": "Resolves item names to item IDs, lists store products, and gets pricing or inventory details.",
+                "instruction": "You are an inventory and catalog specialist.\nYou must:\n1. Help resolve natural language item names (like 'headphones' or 'keyboard') to their specific Item ID using list_available_items.\n2. Fetch full pricing and stock details using get_item_inventory once you have the Item ID.\nAlways present clean, clear catalog and pricing details to the coordinator.",
+                "tools": [
+                  {
+                    "retrieval": null,
+                    "computer_use": null,
+                    "file_search": null,
+                    "google_search": null,
+                    "google_maps": null,
+                    "code_execution": null,
+                    "enterprise_web_search": null,
+                    "function_declarations": [
+                      {
+                        "description": "Lists all available items in our catalog, including their item_ids and names.\n\nReturns:\n    A dictionary containing the catalog list of items.",
+                        "name": "list_available_items",
+                        "parameters": null,
+                        "parameters_json_schema": null,
+                        "response": null,
+                        "response_json_schema": null,
+                        "behavior": null
+                      }
+                    ],
+                    "google_search_retrieval": null,
+                    "parallel_ai_search": null,
+                    "url_context": null,
+                    "mcp_servers": null
+                  },
+                  {
+                    "retrieval": null,
+                    "computer_use": null,
+                    "file_search": null,
+                    "google_search": null,
+                    "google_maps": null,
+                    "code_execution": null,
+                    "enterprise_web_search": null,
+                    "function_declarations": [
+                      {
+                        "description": "Gets inventory details for an item, including name, price, and stock count.\n\nArgs:\n    item_id: The unique identifier of the item (e.g., 'item-101', 'item-102').\n\nReturns:\n    A dictionary with item name, unit price, stock, and status.",
+                        "name": "get_item_inventory",
+                        "parameters": {
+                          "additional_properties": null,
+                          "defs": null,
+                          "ref": null,
+                          "any_of": null,
+                          "default": null,
+                          "description": null,
+                          "enum": null,
+                          "example": null,
+                          "format": null,
+                          "items": null,
+                          "max_items": null,
+                          "max_length": null,
+                          "max_properties": null,
+                          "maximum": null,
+                          "min_items": null,
+                          "min_length": null,
+                          "min_properties": null,
+                          "minimum": null,
+                          "nullable": null,
+                          "pattern": null,
+                          "properties": {
+                            "item_id": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "STRING"
+                            }
+                          },
+                          "property_ordering": null,
+                          "required": [
+                            "item_id"
+                          ],
+                          "title": null,
+                          "type": "OBJECT"
+                        },
+                        "parameters_json_schema": null,
+                        "response": null,
+                        "response_json_schema": null,
+                        "behavior": null
+                      }
+                    ],
+                    "google_search_retrieval": null,
+                    "parallel_ai_search": null,
+                    "url_context": null,
+                    "mcp_servers": null
+                  }
+                ],
+                "sub_agents": []
+              },
+              "billing_agent": {
+                "agent_id": "billing_agent",
+                "agent_type": "LlmAgent",
+                "description": "Validates promo codes, calculates final totals, and securely charges customer cards.",
+                "instruction": "You are a billing and checkout specialist.\nYou must:\n1. Validate promo codes using validate_coupon_code.\n2. Calculate subtotals and final totals using calculate_final_total.\n3. Charge the customer's card securely using charge_customer_card.\nEnsure checkout math is accurate, promotions are applied correctly, and transactions are securely finalized.",
+                "tools": [
+                  {
+                    "retrieval": null,
+                    "computer_use": null,
+                    "file_search": null,
+                    "google_search": null,
+                    "google_maps": null,
+                    "code_execution": null,
+                    "enterprise_web_search": null,
+                    "function_declarations": [
+                      {
+                        "description": "Validates a promotional coupon code and returns its discount percentage.\n\nArgs:\n    code: The promo coupon code string (e.g., 'SAVE10', 'SUPERDEAL').\n\nReturns:\n    A dictionary containing status, coupon validity, and discount_rate (as a decimal float).",
+                        "name": "validate_coupon_code",
+                        "parameters": {
+                          "additional_properties": null,
+                          "defs": null,
+                          "ref": null,
+                          "any_of": null,
+                          "default": null,
+                          "description": null,
+                          "enum": null,
+                          "example": null,
+                          "format": null,
+                          "items": null,
+                          "max_items": null,
+                          "max_length": null,
+                          "max_properties": null,
+                          "maximum": null,
+                          "min_items": null,
+                          "min_length": null,
+                          "min_properties": null,
+                          "minimum": null,
+                          "nullable": null,
+                          "pattern": null,
+                          "properties": {
+                            "code": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "STRING"
+                            }
+                          },
+                          "property_ordering": null,
+                          "required": [
+                            "code"
+                          ],
+                          "title": null,
+                          "type": "OBJECT"
+                        },
+                        "parameters_json_schema": null,
+                        "response": null,
+                        "response_json_schema": null,
+                        "behavior": null
+                      }
+                    ],
+                    "google_search_retrieval": null,
+                    "parallel_ai_search": null,
+                    "url_context": null,
+                    "mcp_servers": null
+                  },
+                  {
+                    "retrieval": null,
+                    "computer_use": null,
+                    "file_search": null,
+                    "google_search": null,
+                    "google_maps": null,
+                    "code_execution": null,
+                    "enterprise_web_search": null,
+                    "function_declarations": [
+                      {
+                        "description": "Calculates the final cart total based on the item price, quantity, and discount rate.\n\nArgs:\n    item_id: The item identifier.\n    quantity: The quantity being purchased.\n    discount_rate: The discount rate as a float (e.g., 0.10 for 10% off).\n\nReturns:\n    A dictionary containing the calculated final total.",
+                        "name": "calculate_final_total",
+                        "parameters": {
+                          "additional_properties": null,
+                          "defs": null,
+                          "ref": null,
+                          "any_of": null,
+                          "default": null,
+                          "description": null,
+                          "enum": null,
+                          "example": null,
+                          "format": null,
+                          "items": null,
+                          "max_items": null,
+                          "max_length": null,
+                          "max_properties": null,
+                          "maximum": null,
+                          "min_items": null,
+                          "min_length": null,
+                          "min_properties": null,
+                          "minimum": null,
+                          "nullable": null,
+                          "pattern": null,
+                          "properties": {
+                            "item_id": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "STRING"
+                            },
+                            "quantity": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "INTEGER"
+                            },
+                            "discount_rate": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "NUMBER"
+                            }
+                          },
+                          "property_ordering": null,
+                          "required": [
+                            "item_id",
+                            "quantity",
+                            "discount_rate"
+                          ],
+                          "title": null,
+                          "type": "OBJECT"
+                        },
+                        "parameters_json_schema": null,
+                        "response": null,
+                        "response_json_schema": null,
+                        "behavior": null
+                      }
+                    ],
+                    "google_search_retrieval": null,
+                    "parallel_ai_search": null,
+                    "url_context": null,
+                    "mcp_servers": null
+                  },
+                  {
+                    "retrieval": null,
+                    "computer_use": null,
+                    "file_search": null,
+                    "google_search": null,
+                    "google_maps": null,
+                    "code_execution": null,
+                    "enterprise_web_search": null,
+                    "function_declarations": [
+                      {
+                        "description": "Charges the calculated amount to the customer's credit card.\n\nArgs:\n    amount: The final total amount to charge to the card.\n\nReturns:\n    A dictionary indicating payment success or failure.",
+                        "name": "charge_customer_card",
+                        "parameters": {
+                          "additional_properties": null,
+                          "defs": null,
+                          "ref": null,
+                          "any_of": null,
+                          "default": null,
+                          "description": null,
+                          "enum": null,
+                          "example": null,
+                          "format": null,
+                          "items": null,
+                          "max_items": null,
+                          "max_length": null,
+                          "max_properties": null,
+                          "maximum": null,
+                          "min_items": null,
+                          "min_length": null,
+                          "min_properties": null,
+                          "minimum": null,
+                          "nullable": null,
+                          "pattern": null,
+                          "properties": {
+                            "amount": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "NUMBER"
+                            }
+                          },
+                          "property_ordering": null,
+                          "required": [
+                            "amount"
+                          ],
+                          "title": null,
+                          "type": "OBJECT"
+                        },
+                        "parameters_json_schema": null,
+                        "response": null,
+                        "response_json_schema": null,
+                        "behavior": null
+                      }
+                    ],
+                    "google_search_retrieval": null,
+                    "parallel_ai_search": null,
+                    "url_context": null,
+                    "mcp_servers": null
+                  }
+                ],
+                "sub_agents": []
+              }
+            },
+            "turns": [
+              {
+                "turn_index": 0,
+                "turn_id": "turn_0",
+                "events": [
+                  {
+                    "author": "root_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "Hello! I'm the main checkout concierge. I can help you with your shopping experience, from finding items to checking out.\n\nWhile I coordinate the process, I rely on specialized sub-agents for specific tasks:\n\n1.  **To find items, check prices, or look at inventory:** I can transfer you to the **Catalog Agent**.\n2.  **To apply promo codes, calculate your final total, or complete a purchase:** I can transfer you to the **Billing Agent**.\n\nHow can I help you start your shopping today?",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  }
+                ]
+              }
+            ]
+          },
+          "user_scenario": null
+        },
+        {
+          "prompt": {
+            "parts": [
+              {
+                "media_resolution": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_call": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "What's the weather like in San Francisco?",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null,
+                "tool_call": null,
+                "tool_response": null,
+                "part_metadata": null
+              }
+            ],
+            "role": "user"
+          },
+          "responses": [
+            {
+              "response": {
+                "parts": [
+                  {
+                    "media_resolution": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "file_data": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "inline_data": null,
+                    "text": "I specialize in helping you find items in our catalog and complete your purchase. I don't have the ability to look up real-time weather information.\n\nIs there anything I can help you buy or check out today?",
+                    "thought": null,
+                    "thought_signature": null,
+                    "video_metadata": null,
+                    "tool_call": null,
+                    "tool_response": null,
+                    "part_metadata": null
+                  }
+                ],
+                "role": "model"
+              }
+            }
+          ],
+          "reference": null,
+          "system_instruction": null,
+          "conversation_history": null,
+          "rubric_groups": null,
+          "eval_case_id": "weather_query",
+          "intermediate_events": null,
+          "agent_info": null,
+          "agent_data": {
+            "agents": {
+              "root_agent": {
+                "agent_id": "root_agent",
+                "agent_type": "LlmAgent",
+                "description": "",
+                "instruction": "You are the main checkout concierge. Help users buy items from our catalog.\nCRITICAL: You do NOT have any local tools to lookup items or perform checkout math. Instead, you must delegate all requests to your specialized sub-agents using the `transfer_to_agent` tool:\n1. To search items, find Item IDs, look up pricing, or check inventory stock: Call `transfer_to_agent` with agent_name='catalog_agent'. Do NOT try to call tools like `get_item_inventory` directly.\n2. To validate promo coupon codes, calculate final totals/discounts, or charge the customer's card: Call `transfer_to_agent` with agent_name='billing_agent'. Do NOT try to call tools like `calculate_final_total` directly.\nCoordinate smoothly to guide the customer from lookup to successful checkout. Keep your response user-friendly and professional.",
+                "tools": [],
+                "sub_agents": [
+                  "catalog_agent",
+                  "billing_agent"
+                ]
+              },
+              "catalog_agent": {
+                "agent_id": "catalog_agent",
+                "agent_type": "LlmAgent",
+                "description": "Resolves item names to item IDs, lists store products, and gets pricing or inventory details.",
+                "instruction": "You are an inventory and catalog specialist.\nYou must:\n1. Help resolve natural language item names (like 'headphones' or 'keyboard') to their specific Item ID using list_available_items.\n2. Fetch full pricing and stock details using get_item_inventory once you have the Item ID.\nAlways present clean, clear catalog and pricing details to the coordinator.",
+                "tools": [
+                  {
+                    "retrieval": null,
+                    "computer_use": null,
+                    "file_search": null,
+                    "google_search": null,
+                    "google_maps": null,
+                    "code_execution": null,
+                    "enterprise_web_search": null,
+                    "function_declarations": [
+                      {
+                        "description": "Lists all available items in our catalog, including their item_ids and names.\n\nReturns:\n    A dictionary containing the catalog list of items.",
+                        "name": "list_available_items",
+                        "parameters": null,
+                        "parameters_json_schema": null,
+                        "response": null,
+                        "response_json_schema": null,
+                        "behavior": null
+                      }
+                    ],
+                    "google_search_retrieval": null,
+                    "parallel_ai_search": null,
+                    "url_context": null,
+                    "mcp_servers": null
+                  },
+                  {
+                    "retrieval": null,
+                    "computer_use": null,
+                    "file_search": null,
+                    "google_search": null,
+                    "google_maps": null,
+                    "code_execution": null,
+                    "enterprise_web_search": null,
+                    "function_declarations": [
+                      {
+                        "description": "Gets inventory details for an item, including name, price, and stock count.\n\nArgs:\n    item_id: The unique identifier of the item (e.g., 'item-101', 'item-102').\n\nReturns:\n    A dictionary with item name, unit price, stock, and status.",
+                        "name": "get_item_inventory",
+                        "parameters": {
+                          "additional_properties": null,
+                          "defs": null,
+                          "ref": null,
+                          "any_of": null,
+                          "default": null,
+                          "description": null,
+                          "enum": null,
+                          "example": null,
+                          "format": null,
+                          "items": null,
+                          "max_items": null,
+                          "max_length": null,
+                          "max_properties": null,
+                          "maximum": null,
+                          "min_items": null,
+                          "min_length": null,
+                          "min_properties": null,
+                          "minimum": null,
+                          "nullable": null,
+                          "pattern": null,
+                          "properties": {
+                            "item_id": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "STRING"
+                            }
+                          },
+                          "property_ordering": null,
+                          "required": [
+                            "item_id"
+                          ],
+                          "title": null,
+                          "type": "OBJECT"
+                        },
+                        "parameters_json_schema": null,
+                        "response": null,
+                        "response_json_schema": null,
+                        "behavior": null
+                      }
+                    ],
+                    "google_search_retrieval": null,
+                    "parallel_ai_search": null,
+                    "url_context": null,
+                    "mcp_servers": null
+                  }
+                ],
+                "sub_agents": []
+              },
+              "billing_agent": {
+                "agent_id": "billing_agent",
+                "agent_type": "LlmAgent",
+                "description": "Validates promo codes, calculates final totals, and securely charges customer cards.",
+                "instruction": "You are a billing and checkout specialist.\nYou must:\n1. Validate promo codes using validate_coupon_code.\n2. Calculate subtotals and final totals using calculate_final_total.\n3. Charge the customer's card securely using charge_customer_card.\nEnsure checkout math is accurate, promotions are applied correctly, and transactions are securely finalized.",
+                "tools": [
+                  {
+                    "retrieval": null,
+                    "computer_use": null,
+                    "file_search": null,
+                    "google_search": null,
+                    "google_maps": null,
+                    "code_execution": null,
+                    "enterprise_web_search": null,
+                    "function_declarations": [
+                      {
+                        "description": "Validates a promotional coupon code and returns its discount percentage.\n\nArgs:\n    code: The promo coupon code string (e.g., 'SAVE10', 'SUPERDEAL').\n\nReturns:\n    A dictionary containing status, coupon validity, and discount_rate (as a decimal float).",
+                        "name": "validate_coupon_code",
+                        "parameters": {
+                          "additional_properties": null,
+                          "defs": null,
+                          "ref": null,
+                          "any_of": null,
+                          "default": null,
+                          "description": null,
+                          "enum": null,
+                          "example": null,
+                          "format": null,
+                          "items": null,
+                          "max_items": null,
+                          "max_length": null,
+                          "max_properties": null,
+                          "maximum": null,
+                          "min_items": null,
+                          "min_length": null,
+                          "min_properties": null,
+                          "minimum": null,
+                          "nullable": null,
+                          "pattern": null,
+                          "properties": {
+                            "code": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "STRING"
+                            }
+                          },
+                          "property_ordering": null,
+                          "required": [
+                            "code"
+                          ],
+                          "title": null,
+                          "type": "OBJECT"
+                        },
+                        "parameters_json_schema": null,
+                        "response": null,
+                        "response_json_schema": null,
+                        "behavior": null
+                      }
+                    ],
+                    "google_search_retrieval": null,
+                    "parallel_ai_search": null,
+                    "url_context": null,
+                    "mcp_servers": null
+                  },
+                  {
+                    "retrieval": null,
+                    "computer_use": null,
+                    "file_search": null,
+                    "google_search": null,
+                    "google_maps": null,
+                    "code_execution": null,
+                    "enterprise_web_search": null,
+                    "function_declarations": [
+                      {
+                        "description": "Calculates the final cart total based on the item price, quantity, and discount rate.\n\nArgs:\n    item_id: The item identifier.\n    quantity: The quantity being purchased.\n    discount_rate: The discount rate as a float (e.g., 0.10 for 10% off).\n\nReturns:\n    A dictionary containing the calculated final total.",
+                        "name": "calculate_final_total",
+                        "parameters": {
+                          "additional_properties": null,
+                          "defs": null,
+                          "ref": null,
+                          "any_of": null,
+                          "default": null,
+                          "description": null,
+                          "enum": null,
+                          "example": null,
+                          "format": null,
+                          "items": null,
+                          "max_items": null,
+                          "max_length": null,
+                          "max_properties": null,
+                          "maximum": null,
+                          "min_items": null,
+                          "min_length": null,
+                          "min_properties": null,
+                          "minimum": null,
+                          "nullable": null,
+                          "pattern": null,
+                          "properties": {
+                            "item_id": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "STRING"
+                            },
+                            "quantity": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "INTEGER"
+                            },
+                            "discount_rate": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "NUMBER"
+                            }
+                          },
+                          "property_ordering": null,
+                          "required": [
+                            "item_id",
+                            "quantity",
+                            "discount_rate"
+                          ],
+                          "title": null,
+                          "type": "OBJECT"
+                        },
+                        "parameters_json_schema": null,
+                        "response": null,
+                        "response_json_schema": null,
+                        "behavior": null
+                      }
+                    ],
+                    "google_search_retrieval": null,
+                    "parallel_ai_search": null,
+                    "url_context": null,
+                    "mcp_servers": null
+                  },
+                  {
+                    "retrieval": null,
+                    "computer_use": null,
+                    "file_search": null,
+                    "google_search": null,
+                    "google_maps": null,
+                    "code_execution": null,
+                    "enterprise_web_search": null,
+                    "function_declarations": [
+                      {
+                        "description": "Charges the calculated amount to the customer's credit card.\n\nArgs:\n    amount: The final total amount to charge to the card.\n\nReturns:\n    A dictionary indicating payment success or failure.",
+                        "name": "charge_customer_card",
+                        "parameters": {
+                          "additional_properties": null,
+                          "defs": null,
+                          "ref": null,
+                          "any_of": null,
+                          "default": null,
+                          "description": null,
+                          "enum": null,
+                          "example": null,
+                          "format": null,
+                          "items": null,
+                          "max_items": null,
+                          "max_length": null,
+                          "max_properties": null,
+                          "maximum": null,
+                          "min_items": null,
+                          "min_length": null,
+                          "min_properties": null,
+                          "minimum": null,
+                          "nullable": null,
+                          "pattern": null,
+                          "properties": {
+                            "amount": {
+                              "additional_properties": null,
+                              "defs": null,
+                              "ref": null,
+                              "any_of": null,
+                              "default": null,
+                              "description": null,
+                              "enum": null,
+                              "example": null,
+                              "format": null,
+                              "items": null,
+                              "max_items": null,
+                              "max_length": null,
+                              "max_properties": null,
+                              "maximum": null,
+                              "min_items": null,
+                              "min_length": null,
+                              "min_properties": null,
+                              "minimum": null,
+                              "nullable": null,
+                              "pattern": null,
+                              "properties": null,
+                              "property_ordering": null,
+                              "required": null,
+                              "title": null,
+                              "type": "NUMBER"
+                            }
+                          },
+                          "property_ordering": null,
+                          "required": [
+                            "amount"
+                          ],
+                          "title": null,
+                          "type": "OBJECT"
+                        },
+                        "parameters_json_schema": null,
+                        "response": null,
+                        "response_json_schema": null,
+                        "behavior": null
+                      }
+                    ],
+                    "google_search_retrieval": null,
+                    "parallel_ai_search": null,
+                    "url_context": null,
+                    "mcp_servers": null
+                  }
+                ],
+                "sub_agents": []
+              }
+            },
+            "turns": [
+              {
+                "turn_index": 0,
+                "turn_id": "turn_0",
+                "events": [
+                  {
+                    "author": "root_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "I specialize in helping you find items in our catalog and complete your purchase. I don't have the ability to look up real-time weather information.\n\nIs there anything I can help you buy or check out today?",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  }
+                ]
+              }
+            ]
+          },
+          "user_scenario": null
+        }
+      ],
+      "eval_dataset_df": null,
+      "candidate_name": null
+    }
+  ],
+  "metadata": {
+    "candidate_names": [
+      "candidate_1"
+    ],
+    "dataset_name": null,
+    "dataset_id": null,
+    "creation_timestamp": "2026-06-12T02:48:00.365479Z",
+    "dataset": [
+      {
+        "prompt_display_text": "Hello, what can you help me with?",
+        "prompt_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"Hello, what can you help me with?\"\n    }\n  ],\n  \"role\": \"user\"\n}",
+        "reference": "",
+        "reference_raw_json": "",
+        "response_display_text": "Hello! I'm the main checkout concierge. I can help you with your shopping experience, from finding items to checking out.\n\nWhile I coordinate the process, I rely on specialized sub-agents for specific tasks:\n\n1.  **To find items, check prices, or look at inventory:** I can transfer you to the **Catalog Agent**.\n2.  **To apply promo codes, calculate your final total, or complete a purchase:** I can transfer you to the **Billing Agent**.\n\nHow can I help you start your shopping today?",
+        "response_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"Hello! I'm the main checkout concierge. I can help you with your shopping experience, from finding items to checking out.\\n\\nWhile I coordinate the process, I rely on specialized sub-agents for specific tasks:\\n\\n1.  **To find items, check prices, or look at inventory:** I can transfer you to the **Catalog Agent**.\\n2.  **To apply promo codes, calculate your final total, or complete a purchase:** I can transfer you to the **Billing Agent**.\\n\\nHow can I help you start your shopping today?\"\n    }\n  ],\n  \"role\": \"model\"\n}",
+        "intermediate_events": null,
+        "agent_data": "{\"agents\": {\"root_agent\": {\"agent_id\": \"root_agent\", \"agent_type\": \"LlmAgent\", \"description\": \"\", \"instruction\": \"You are the main checkout concierge. Help users buy items from our catalog.\\nCRITICAL: You do NOT have any local tools to lookup items or perform checkout math. Instead, you must delegate all requests to your specialized sub-agents using the `transfer_to_agent` tool:\\n1. To search items, find Item IDs, look up pricing, or check inventory stock: Call `transfer_to_agent` with agent_name='catalog_agent'. Do NOT try to call tools like `get_item_inventory` directly.\\n2. To validate promo coupon codes, calculate final totals/discounts, or charge the customer's card: Call `transfer_to_agent` with agent_name='billing_agent'. Do NOT try to call tools like `calculate_final_total` directly.\\nCoordinate smoothly to guide the customer from lookup to successful checkout. Keep your response user-friendly and professional.\", \"tools\": [], \"sub_agents\": [\"catalog_agent\", \"billing_agent\"]}, \"catalog_agent\": {\"agent_id\": \"catalog_agent\", \"agent_type\": \"LlmAgent\", \"description\": \"Resolves item names to item IDs, lists store products, and gets pricing or inventory details.\", \"instruction\": \"You are an inventory and catalog specialist.\\nYou must:\\n1. Help resolve natural language item names (like 'headphones' or 'keyboard') to their specific Item ID using list_available_items.\\n2. Fetch full pricing and stock details using get_item_inventory once you have the Item ID.\\nAlways present clean, clear catalog and pricing details to the coordinator.\", \"tools\": [{\"function_declarations\": [{\"description\": \"Lists all available items in our catalog, including their item_ids and names.\\n\\nReturns:\\n    A dictionary containing the catalog list of items.\", \"name\": \"list_available_items\"}]}, {\"function_declarations\": [{\"description\": \"Gets inventory details for an item, including name, price, and stock count.\\n\\nArgs:\\n    item_id: The unique identifier of the item (e.g., 'item-101', 'item-102').\\n\\nReturns:\\n    A dictionary with item name, unit price, stock, and status.\", \"name\": \"get_item_inventory\", \"parameters\": {\"properties\": {\"item_id\": {\"type\": \"STRING\"}}, \"required\": [\"item_id\"], \"type\": \"OBJECT\"}}]}], \"sub_agents\": []}, \"billing_agent\": {\"agent_id\": \"billing_agent\", \"agent_type\": \"LlmAgent\", \"description\": \"Validates promo codes, calculates final totals, and securely charges customer cards.\", \"instruction\": \"You are a billing and checkout specialist.\\nYou must:\\n1. Validate promo codes using validate_coupon_code.\\n2. Calculate subtotals and final totals using calculate_final_total.\\n3. Charge the customer's card securely using charge_customer_card.\\nEnsure checkout math is accurate, promotions are applied correctly, and transactions are securely finalized.\", \"tools\": [{\"function_declarations\": [{\"description\": \"Validates a promotional coupon code and returns its discount percentage.\\n\\nArgs:\\n    code: The promo coupon code string (e.g., 'SAVE10', 'SUPERDEAL').\\n\\nReturns:\\n    A dictionary containing status, coupon validity, and discount_rate (as a decimal float).\", \"name\": \"validate_coupon_code\", \"parameters\": {\"properties\": {\"code\": {\"type\": \"STRING\"}}, \"required\": [\"code\"], \"type\": \"OBJECT\"}}]}, {\"function_declarations\": [{\"description\": \"Calculates the final cart total based on the item price, quantity, and discount rate.\\n\\nArgs:\\n    item_id: The item identifier.\\n    quantity: The quantity being purchased.\\n    discount_rate: The discount rate as a float (e.g., 0.10 for 10% off).\\n\\nReturns:\\n    A dictionary containing the calculated final total.\", \"name\": \"calculate_final_total\", \"parameters\": {\"properties\": {\"item_id\": {\"type\": \"STRING\"}, \"quantity\": {\"type\": \"INTEGER\"}, \"discount_rate\": {\"type\": \"NUMBER\"}}, \"required\": [\"item_id\", \"quantity\", \"discount_rate\"], \"type\": \"OBJECT\"}}]}, {\"function_declarations\": [{\"description\": \"Charges the calculated amount to the customer's credit card.\\n\\nArgs:\\n    amount: The final total amount to charge to the card.\\n\\nReturns:\\n    A dictionary indicating payment success or failure.\", \"name\": \"charge_customer_card\", \"parameters\": {\"properties\": {\"amount\": {\"type\": \"NUMBER\"}}, \"required\": [\"amount\"], \"type\": \"OBJECT\"}}]}], \"sub_agents\": []}}, \"turns\": [{\"turn_index\": 0, \"turn_id\": \"turn_0\", \"events\": [{\"author\": \"root_agent\", \"content\": {\"parts\": [{\"text\": \"Hello! I'm the main checkout concierge. I can help you with your shopping experience, from finding items to checking out.\\n\\nWhile I coordinate the process, I rely on specialized sub-agents for specific tasks:\\n\\n1.  **To find items, check prices, or look at inventory:** I can transfer you to the **Catalog Agent**.\\n2.  **To apply promo codes, calculate your final total, or complete a purchase:** I can transfer you to the **Billing Agent**.\\n\\nHow can I help you start your shopping today?\"}], \"role\": \"model\"}}]}]}"
+      },
+      {
+        "prompt_display_text": "What's the weather like in San Francisco?",
+        "prompt_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"What's the weather like in San Francisco?\"\n    }\n  ],\n  \"role\": \"user\"\n}",
+        "reference": "",
+        "reference_raw_json": "",
+        "response_display_text": "I specialize in helping you find items in our catalog and complete your purchase. I don't have the ability to look up real-time weather information.\n\nIs there anything I can help you buy or check out today?",
+        "response_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"I specialize in helping you find items in our catalog and complete your purchase. I don't have the ability to look up real-time weather information.\\n\\nIs there anything I can help you buy or check out today?\"\n    }\n  ],\n  \"role\": \"model\"\n}",
+        "intermediate_events": null,
+        "agent_data": "{\"agents\": {\"root_agent\": {\"agent_id\": \"root_agent\", \"agent_type\": \"LlmAgent\", \"description\": \"\", \"instruction\": \"You are the main checkout concierge. Help users buy items from our catalog.\\nCRITICAL: You do NOT have any local tools to lookup items or perform checkout math. Instead, you must delegate all requests to your specialized sub-agents using the `transfer_to_agent` tool:\\n1. To search items, find Item IDs, look up pricing, or check inventory stock: Call `transfer_to_agent` with agent_name='catalog_agent'. Do NOT try to call tools like `get_item_inventory` directly.\\n2. To validate promo coupon codes, calculate final totals/discounts, or charge the customer's card: Call `transfer_to_agent` with agent_name='billing_agent'. Do NOT try to call tools like `calculate_final_total` directly.\\nCoordinate smoothly to guide the customer from lookup to successful checkout. Keep your response user-friendly and professional.\", \"tools\": [], \"sub_agents\": [\"catalog_agent\", \"billing_agent\"]}, \"catalog_agent\": {\"agent_id\": \"catalog_agent\", \"agent_type\": \"LlmAgent\", \"description\": \"Resolves item names to item IDs, lists store products, and gets pricing or inventory details.\", \"instruction\": \"You are an inventory and catalog specialist.\\nYou must:\\n1. Help resolve natural language item names (like 'headphones' or 'keyboard') to their specific Item ID using list_available_items.\\n2. Fetch full pricing and stock details using get_item_inventory once you have the Item ID.\\nAlways present clean, clear catalog and pricing details to the coordinator.\", \"tools\": [{\"function_declarations\": [{\"description\": \"Lists all available items in our catalog, including their item_ids and names.\\n\\nReturns:\\n    A dictionary containing the catalog list of items.\", \"name\": \"list_available_items\"}]}, {\"function_declarations\": [{\"description\": \"Gets inventory details for an item, including name, price, and stock count.\\n\\nArgs:\\n    item_id: The unique identifier of the item (e.g., 'item-101', 'item-102').\\n\\nReturns:\\n    A dictionary with item name, unit price, stock, and status.\", \"name\": \"get_item_inventory\", \"parameters\": {\"properties\": {\"item_id\": {\"type\": \"STRING\"}}, \"required\": [\"item_id\"], \"type\": \"OBJECT\"}}]}], \"sub_agents\": []}, \"billing_agent\": {\"agent_id\": \"billing_agent\", \"agent_type\": \"LlmAgent\", \"description\": \"Validates promo codes, calculates final totals, and securely charges customer cards.\", \"instruction\": \"You are a billing and checkout specialist.\\nYou must:\\n1. Validate promo codes using validate_coupon_code.\\n2. Calculate subtotals and final totals using calculate_final_total.\\n3. Charge the customer's card securely using charge_customer_card.\\nEnsure checkout math is accurate, promotions are applied correctly, and transactions are securely finalized.\", \"tools\": [{\"function_declarations\": [{\"description\": \"Validates a promotional coupon code and returns its discount percentage.\\n\\nArgs:\\n    code: The promo coupon code string (e.g., 'SAVE10', 'SUPERDEAL').\\n\\nReturns:\\n    A dictionary containing status, coupon validity, and discount_rate (as a decimal float).\", \"name\": \"validate_coupon_code\", \"parameters\": {\"properties\": {\"code\": {\"type\": \"STRING\"}}, \"required\": [\"code\"], \"type\": \"OBJECT\"}}]}, {\"function_declarations\": [{\"description\": \"Calculates the final cart total based on the item price, quantity, and discount rate.\\n\\nArgs:\\n    item_id: The item identifier.\\n    quantity: The quantity being purchased.\\n    discount_rate: The discount rate as a float (e.g., 0.10 for 10% off).\\n\\nReturns:\\n    A dictionary containing the calculated final total.\", \"name\": \"calculate_final_total\", \"parameters\": {\"properties\": {\"item_id\": {\"type\": \"STRING\"}, \"quantity\": {\"type\": \"INTEGER\"}, \"discount_rate\": {\"type\": \"NUMBER\"}}, \"required\": [\"item_id\", \"quantity\", \"discount_rate\"], \"type\": \"OBJECT\"}}]}, {\"function_declarations\": [{\"description\": \"Charges the calculated amount to the customer's credit card.\\n\\nArgs:\\n    amount: The final total amount to charge to the card.\\n\\nReturns:\\n    A dictionary indicating payment success or failure.\", \"name\": \"charge_customer_card\", \"parameters\": {\"properties\": {\"amount\": {\"type\": \"NUMBER\"}}, \"required\": [\"amount\"], \"type\": \"OBJECT\"}}]}], \"sub_agents\": []}}, \"turns\": [{\"turn_index\": 0, \"turn_id\": \"turn_0\", \"events\": [{\"author\": \"root_agent\", \"content\": {\"parts\": [{\"text\": \"I specialize in helping you find items in our catalog and complete your purchase. I don't have the ability to look up real-time weather information.\\n\\nIs there anything I can help you buy or check out today?\"}], \"role\": \"model\"}}]}]}"
+      }
+    ]
+  },
+  "agent_info": null
+}
